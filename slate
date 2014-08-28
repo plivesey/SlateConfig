@@ -1,0 +1,47 @@
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+
+# Resize Bindings
+bind right:alt;ctrl  resize +10% +0
+bind left:alt;ctrl   resize -10% +0
+bind up:alt;ctrl     resize +0   -10%
+bind down:alt;ctrl   resize +0   +10%
+
+# Push Bindings
+bind right:ctrl;cmd;shift  push right bar-resize:screenSizeX/2
+bind left:ctrl;cmd;shift   push left  bar-resize:screenSizeX/2
+bind up:ctrl;cmd;shift     push up    bar-resize:screenSizeY/2
+bind down:ctrl;cmd;shift   push down  bar-resize:screenSizeY/2
+
+# Full Screen Chain
+alias fullScreen  move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias leftScreen  move screenOriginX;screenOriginY screenSizeX*.5;screenSizeY
+alias rightScreen move screenOriginX+screenSizeX*.5;screenOriginY screenSizeX*.5;screenSizeY
+
+bind return:ctrl;cmd chain ${fullScreen} | ${leftScreen} | ${rightScreen} 
+
+# Partial Screen Chain
+alias generalSmallScreen     move screenOriginX+screenSizeX*.1;screenOriginY+screenSizeY*.1 screenSizeX*.7;screenSizeY*.7
+alias leftShortSmallScreen   move screenOriginX+screenSizeX*.1;screenOriginY+screenSizeY*.2 screenSizeX*.4;screenSizeY*.5
+alias rightShortSmallScreen  move screenOriginX+screenSizeX*.5;screenOriginY+screenSizeY*.2 screenSizeX*.4;screenSizeY*.5
+alias leftTallSmallScreen    move screenOriginX;screenOriginY+screenSizeY*.1 screenSizeX*.2;screenSizeY*.8
+alias rightTallSmallScreen   move screenOriginX+screenSizeX*.8;screenOriginY+screenSizeY*.1 screenSizeX*.2;screenSizeY*.8
+
+bind return:ctrl;cmd;shift   chain ${generalSmallScreen} | ${leftShortSmallScreen} | ${rightShortSmallScreen} | ${leftTallSmallScreen} | ${rightTallSmallScreen}
+
+# Nudge Bindings
+bind right:shift;alt;ctrl nudge +10% +0
+bind left:shift;alt;ctrl  nudge -10% +0
+bind up:shift;alt;ctrl    nudge +0   -10%
+bind down:shift;alt;ctrl  nudge +0   +10%
+
+# Throw Bindings
+bind right:ctrl;alt;cmd throw right resize
+bind left:ctrl;alt;cmd  throw left  resize
+bind up:ctrl;alt;cmd    throw up    resize
+bind down:ctrl;alt;cmd  throw down  resize
+
+# Window Hints
+bind esc:cmd hint
+
