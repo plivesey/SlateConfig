@@ -14,12 +14,8 @@ bind left:ctrl;cmd;shift   push left  bar-resize:screenSizeX/2
 bind up:ctrl;cmd;shift     push up    bar-resize:screenSizeY/2
 bind down:ctrl;cmd;shift   push down  bar-resize:screenSizeY/2
 
-# Full Screen Chain
-alias fullScreen  move screenOriginX;screenOriginY screenSizeX;screenSizeY
-alias leftScreen  move screenOriginX;screenOriginY screenSizeX*.5;screenSizeY
-alias rightScreen move screenOriginX+screenSizeX*.5;screenOriginY screenSizeX*.5;screenSizeY
-
-bind return:ctrl;cmd chain ${fullScreen} | ${leftScreen} | ${rightScreen} 
+# Full Screen
+bind return:ctrl;cmd       move screenOriginX;screenOriginY screenSizeX;screenSizeY
 
 # Partial Screen Chain
 alias generalSmallScreen     move screenOriginX+screenSizeX*.1;screenOriginY+screenSizeY*.1 screenSizeX*.7;screenSizeY*.7
@@ -44,4 +40,3 @@ bind down:ctrl;alt;cmd  throw down  resize
 
 # Window Hints
 bind esc:cmd hint
-
